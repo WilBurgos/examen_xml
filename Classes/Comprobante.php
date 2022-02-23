@@ -48,5 +48,11 @@ class Comprobante extends XML
         $this->rules['SerieFolioFiscalOrig'] = 'O';
         $this->rules['FechaFolioFiscalOrig'] = 'O';
         $this->rules['MontoFolioFiscalOrig'] = 'O';
+
+        /* se agregan más atributos */
+        $this->atributos['SubTotal'] = '';
+        $this->atributos['Fecha'] = '';
+        $this->rules['SubTotal'] = 'R';
+        $this->rules['Fecha'] = 'R';
     }
 }

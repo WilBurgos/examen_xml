@@ -3,9 +3,12 @@
 class Emisor extends XML
 {
 
-    public $regimenFiscal;
+    /* no se está ocupando */
+    // public $regimenFiscal;
 
-    protected function __construct()
+    /* funcion como public */
+    // protected function __construct()
+    public function __construct()
     {
         $this->atributos = [];
         $this->atributos['Nombre'] = '';
@@ -13,6 +16,10 @@ class Emisor extends XML
         $this->rules = [];
         $this->rules['Nombre'] = 'R';
         $this->rules['RegimenFiscal'] = 'R';
+
+        /*Se agregan atributos y reglas faltantes */
+        $this->atributos['Rfc'] = '';
+        $this->rules['Rfc'] = 'R';
     }
 
     public function getNode()

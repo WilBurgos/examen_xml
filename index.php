@@ -23,21 +23,35 @@ class Main
         ]
     ];
 
-    protected function __construct()
+    /* El método  __construct debe ser público*/
+    // protected function __construct()
+    public function __construct()
     {
         $this->cfdi_xml = new CFDI;
     }
 
-    final public static function createXML()
+    /* función createXML no debe estar static */
+    // final public static function createXML()
+    final public function createXML()
     {
-         //Obtener el XML por medio de la clase XML
+        //Obtener el XML por medio de la clase XML
         foreach ($this->array_data as $key => $value) :
             if ($key != (string) 'Comprobante') :
                 foreach ($value as $attribute => $value) :
                 //Setear attributos
+                $this->cfdi_xml->emisor->setAtribute($attribute,$value);
+                endforeach;
+            endif;
+            /* enviar emisor para que se genere el XML */
+            if ($key != (string) 'Emisor') :
+                foreach ($value as $attribute => $value) :
+                $this->cfdi_xml->comprobante->setAtribute($attribute,$value);
                 endforeach;
             endif;
         endforeach;
+
+        /* imprimir */
+        echo $this->cfdi_xml->getNode();
     }
 }
 

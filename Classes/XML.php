@@ -2,9 +2,11 @@
 
 class XML
 {
-
-    protected $atributos;
-    protected $rules;
+    /* Variables deben ser public */
+    // protected $atributos;
+    // protected $rules;
+    public $atributos;
+    public $rules;
 
     function __construct()
     {
@@ -12,7 +14,9 @@ class XML
         $this->rules = array();
     }
 
-    protected function setSatFormat($value)
+    /* función como public */
+    // protected function setSatFormat($value)
+    public function setSatFormat($value)
     {
         $aux = trim(strip_tags($value));
         if (!XML::isUtf8($aux)) {
@@ -49,9 +53,13 @@ class XML
     }
 
     //Resolver funcionalidad
-    private function setAtribute($attr, $value)
+    /* función como public */
+    // private function setAtribute($attr, $value)
+    public function setAtribute($attr, $value)
     {
-        $this->atributos[] = ($attr != 'TipoDeComprobante') ? $this->setSatFormat($value) : $value;
+        /* Validar que que el atributo exista en en arreglo de atributos */
+        // $this->atributos[] = ($attr != 'TipoDeComprobante') ? $this->setSatFormat($value) : $value;
+        $this->atributos[$attr] = ($attr != 'TipoDeComprobante') ? $this->setSatFormat($value) : $value;
     }
 
     function getAtributes()
